@@ -5,6 +5,9 @@ import java.util.Map;
 
 import reactor.kafka.receiver.ReceiverRecord;
 
+/**
+ * Overridable class for creating IncomingMessage instances.
+ */
 public class IncomingMessageFactory
 {
 

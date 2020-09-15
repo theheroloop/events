@@ -32,7 +32,10 @@ public class Message
   {
     String name = getStringField( EVENT_TYPE_FIELD.fieldName() );
 
-    return name != null && EventType.isValid( name );
+    if( name == null && !EventType.isValid( name ) )
+      return false;
+ 
+    return eventType().isMessageValidForThisType( this );
   }
 
   /**
