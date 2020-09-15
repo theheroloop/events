@@ -28,6 +28,10 @@ public class IncomingMessageTest
     assertEquals( "L1", message.looperId() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "R1", message.requestId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -45,6 +49,10 @@ public class IncomingMessageTest
     assertEquals( "L1", message.looperId() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "R1", message.requestId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -62,6 +70,10 @@ public class IncomingMessageTest
     assertEquals( "L1", message.looperId() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "R1", message.requestId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -79,6 +91,10 @@ public class IncomingMessageTest
     assertEquals( "L1", message.looperId() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "R1", message.requestId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -96,6 +112,10 @@ public class IncomingMessageTest
     assertEquals( "L1", message.looperId() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "R1", message.requestId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -112,6 +132,10 @@ public class IncomingMessageTest
     assertEquals( LOOPER_LOCATION_UPDATED, message.eventType() );
     assertEquals( "L1", message.looperId() );
     assertEquals( "10.1,23.3", message.location().toString() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertFalse( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -144,6 +168,10 @@ public class IncomingMessageTest
     assertEquals( 2, locations.size() );
     assertEquals( "10.1,23.3", locations.get(0).toString() );
     assertEquals( "10.3,22.3", locations.get(1).toString() );
+
+    assertFalse( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -212,6 +240,10 @@ public class IncomingMessageTest
     assertEquals( "L1", message.looperId() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "93", message.requestId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -239,6 +271,10 @@ public class IncomingMessageTest
     assertEquals( "L1", message.looperId() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "R1", message.requestId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -256,6 +292,10 @@ public class IncomingMessageTest
     assertEquals( "L1", message.looperId() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "R1", message.requestId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -271,6 +311,10 @@ public class IncomingMessageTest
     assertEquals( Topic.LOOPER_NOTIFICATIONS, message.topic() );
     assertEquals( HEROES_AVAILABLE_NEAR_LOOPER, message.eventType() );
     assertEquals( "L1", message.looperId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertFalse( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -286,6 +330,10 @@ public class IncomingMessageTest
     assertEquals( Topic.LOOPER_NOTIFICATIONS, message.topic() );
     assertEquals( HEROES_UNAVAILABLE_NEAR_LOOPER, message.eventType() );
     assertEquals( "L1", message.looperId() );
+
+    assertTrue( message.matchesUserId("L1") );
+    assertFalse( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -302,6 +350,10 @@ public class IncomingMessageTest
     assertEquals( MATCHING_REQUEST_NEAR_HERO, message.eventType() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "34", message.requestId() );
+
+    assertFalse( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
   @Test
@@ -318,6 +370,10 @@ public class IncomingMessageTest
     assertEquals( REQUEST_NO_LONGER_AVAILABLE, message.eventType() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "34", message.requestId() );
+
+    assertFalse( message.matchesUserId("L1") );
+    assertTrue( message.matchesUserId("H1") );
+    assertFalse( message.matchesUserId("Tuna") );
   }
 
 }

@@ -9,19 +9,36 @@ public enum Topic
   /**
    * Main event channel for The Hero Loop notifications
    */
-  THL_EVENTS,
+  THL_EVENTS
+  {
+    @Override
+    boolean messageMatchesUserId( Message message, String userId )
+    {
+      return message.matchesHero( userId ) || message.matchesLooper( userId );
+    }
+  },
 
   /**
    * Notifications that should be sent to looper clients, 
    * produced by the Location match stream processor.
    */
-  LOOPER_NOTIFICATIONS,
+  LOOPER_NOTIFICATIONS
+  {
+    @Override
+    boolean messageMatchesUserId( Message message, String userId )
+      { return message.matchesLooper( userId ); }
+  },
 
   /**
    * Notifications that should be sent to hero clients, 
    * produced by the Location match stream processor.
    */
-  HERO_NOTIFICATIONS;
+  HERO_NOTIFICATIONS
+  {
+    @Override
+    boolean messageMatchesUserId( Message message, String userId )
+      { return message.matchesHero( userId ); }
+  };
 
   ////////////////////////////////////////////////////////////////////////////
   // Static API
@@ -54,6 +71,13 @@ public enum Topic
 
   public String topicName()
     { return _name; }
+
+  /**
+   * Return true if a given input message on this topic matches the provided
+   * user id.
+   */
+  boolean messageMatchesUserId( Message message, String userId )
+    { return false; }
 
   @Override
   public String toString()

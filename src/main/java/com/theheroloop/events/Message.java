@@ -101,6 +101,12 @@ public class Message
     return locations;
   }
 
+  public boolean matchesLooper( String looperId )
+    { return looperId.equals( looperId() ); }
+
+  public boolean matchesHero( String heroId )
+    { return heroId.equals( heroId() ); }
+
   ////////////////////////////////////////////////////////////////////////////
   // Overriden
 

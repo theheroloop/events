@@ -55,4 +55,7 @@ public class IncomingMessage extends Message
   public String payload()
     { return _payload; }
 
+  public boolean matchesUserId( String userId )
+    { return _topic.messageMatchesUserId( this, userId ); }
+
 }
