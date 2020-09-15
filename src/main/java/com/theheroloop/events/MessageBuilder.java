@@ -14,7 +14,7 @@ public class MessageBuilder
   // Constructor
 
   private MessageBuilder( EventType eventType )
-    { set( EVENT_TYPE_FIELD.fieldName(), eventType ); }
+    { set( EVENT_TYPE_FIELD.fieldName(), eventType.eventName() ); }
 
   ////////////////////////////////////////////////////////////////////////////
   // Static API
