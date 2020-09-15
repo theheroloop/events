@@ -28,6 +28,19 @@ public class IncomingMessage extends Message
   }
 
   /////////////////////////////////////////////////////////////////////////////
+  // Static API
+
+  /**
+   * Convenience factory for test purposes.
+   */
+  public static IncomingMessage for_( Topic topic, String payload )
+  {
+    var factory = new IncomingMessageFactory();
+
+    return factory.create( topic, 0, null, payload );
+  }
+
+  /////////////////////////////////////////////////////////////////////////////
   // Public API
 
   public Topic topic()
