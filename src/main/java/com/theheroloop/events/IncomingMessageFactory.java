@@ -20,18 +20,20 @@ public class IncomingMessageFactory
 
     var topic = Topic.for_( topicName );
 
-    try
-      { return create( topic, offset, key, payload ); }
-    catch( Exception e )
-      { return invalidIncomingMessage( topic, offset, key, payload ); }
+    return create( topic, offset, key, payload );
   }
 
   public IncomingMessage create
     ( Topic topic, long offset, String key, String payload )
   {
-    var fields = JsonDeserializer.extract( payload );
+    try
+    {
+      var fields = JsonDeserializer.extract( payload );
  
-    return create( topic, offset, key, payload, fields );
+      return create( topic, offset, key, payload, fields );
+    }
+    catch( Exception e )
+      { return invalidIncomingMessage( topic, offset, key, payload ); }
   }
 
   public IncomingMessage invalidIncomingMessage
