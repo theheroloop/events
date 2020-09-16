@@ -18,7 +18,7 @@ public class KafkaMessageSource
   private final ReactorIncomingMessageFactory _factory =
     new ReactorIncomingMessageFactory();
 
-  KafkaMessageSource
+  public KafkaMessageSource
   (
     KafkaReceiver<String, String> receiver,
     Set<EventType> supportedEventTypes
