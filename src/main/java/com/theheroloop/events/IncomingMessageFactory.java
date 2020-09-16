@@ -3,6 +3,8 @@ package com.theheroloop.events;
 import java.util.Collections;
 import java.util.Map;
 
+import com.theheroloop.events.json.JsonDeserializer;
+
 import reactor.kafka.receiver.ReceiverRecord;
 
 /**

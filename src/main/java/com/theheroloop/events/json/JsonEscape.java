@@ -1,4 +1,4 @@
-package com.theheroloop.events;
+package com.theheroloop.events.json;
 
 public class JsonEscape
 {

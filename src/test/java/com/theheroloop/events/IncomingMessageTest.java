@@ -1,8 +1,8 @@
 package com.theheroloop.events;
 
 import static com.theheroloop.events.EventType.*;
-import static com.theheroloop.events.JsonEscape.q;
 import static com.theheroloop.events.Topic.*;
+import static com.theheroloop.events.json.JsonEscape.q;
 
 import static org.junit.Assert.*;
 
