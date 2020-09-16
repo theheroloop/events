@@ -3,7 +3,7 @@ package com.theheroloop.events;
 import java.util.Collections;
 import java.util.Map;
 
-import reactor.kafka.receiver.ReceiverRecord;
+import com.theheroloop.events.json.JsonDeserializer;
 
 /**
  * Overridable class for creating IncomingMessage instances.
@@ -11,13 +11,9 @@ import reactor.kafka.receiver.ReceiverRecord;
 public class IncomingMessageFactory
 {
 
-  public IncomingMessage create( ReceiverRecord<String, String> record )
+  public IncomingMessage create
+    ( String topicName, long offset, String key, String payload )
   {
-    var offset = record.receiverOffset().offset();
-    var topicName = record.topic();
-    var key = record.key();
-    var payload = record.value();
-
     if( !Topic.isValid(topicName) )
       return invalidIncomingMessage( null, offset, key, payload );
 
