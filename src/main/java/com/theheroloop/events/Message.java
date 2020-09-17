@@ -4,6 +4,8 @@ import static com.theheroloop.events.MessageField.*;
 
 import java.util.*;
 
+import com.theheroloop.events.json.JsonSerializer;
+
 /**
  * Base class for both incoming and outgoing messages.
  */
@@ -106,6 +108,9 @@ public class Message
 
   public boolean matchesHero( String heroId )
     { return heroId.equals( heroId() ); }
+
+  public String toJson()
+    { return JsonSerializer.toJson( _fields ); }
 
   ////////////////////////////////////////////////////////////////////////////
   // Overriden
