@@ -1,27 +1,22 @@
 package com.theheroloop.events.json;
 
+import static com.theheroloop.events.json.JsonSupport.MAPPER;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class JsonDeserializer
 {
 
-  private static final ObjectMapper MAPPER = new ObjectMapper();
-
   @SuppressWarnings( "unchecked" )
   public static Map<String, Object> extract( String payload )
   {
-    try {
-      return MAPPER.readValue( payload, HashMap.class );
-    }
-    catch( RuntimeException e ) {
-      throw e;
-    }
-    catch( Exception e ) {
-      throw new RuntimeException( e );
-    }
+    try
+      { return MAPPER.readValue( payload, HashMap.class ); }
+    catch( JsonProcessingException e )
+      { throw new IllegalArgumentException( payload, e ); }
   }
 
 }
