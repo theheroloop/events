@@ -9,7 +9,7 @@ import java.util.*;
  */
 public enum HelpType
 {
-  GROCERIES( PICKER, SHOPPER ),
+  FOOD     ( PICKER, SHOPPER ),
   TRANSPORT( DRIVER          ),
   MEDICINE ( PICKER, SHOPPER ),
   OTHER;
