@@ -1,4 +1,4 @@
-# server_message_push
+# events
 Common event definitions for reuse on The Hero Loop projects
 
 The intention is to hold event definitions for all language implementations
