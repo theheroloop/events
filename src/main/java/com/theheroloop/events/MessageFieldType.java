@@ -5,6 +5,13 @@ public enum MessageFieldType
 
   EVENT_TYPE,
 
+  BOOLEAN_TYPE
+  {
+    @Override
+    public boolean validateValue( Object value )
+      { return value != null && value instanceof Boolean; }
+  },
+
   NUMBER_TYPE
   {
     @Override
