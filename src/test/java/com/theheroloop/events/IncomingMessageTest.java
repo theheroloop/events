@@ -149,17 +149,17 @@ public class IncomingMessageTest
   }
 
   @Test
-  public void testHeroAvailabilityUpdatedEvent()
+  public void testHeroLocationUpdatedEvent()
   {
     var message = IncomingMessage.for_( THL_EVENTS, q(
-      "{ 'eventType': 'hero-availability-updated', 'heroId': 'H1', 'location': '10.1,23.3', 'oldLocation': '10.3,22.3' }"
+      "{ 'eventType': 'hero-location-updated', 'heroId': 'H1', 'location': '10.1,23.3', 'oldLocation': '10.3,22.3' }"
     ));
 
     assertEquals( 0, message.offset() );
     assertNull( message.key() );
     assertTrue( message.isValid() );
     assertEquals( Topic.THL_EVENTS, message.topic() );
-    assertEquals( HERO_AVAILABILITY_UPDATED, message.eventType() );
+    assertEquals( HERO_LOCATION_UPDATED, message.eventType() );
     assertEquals( "H1", message.heroId() );
     assertEquals( "10.1,23.3", message.location().toString() );
     assertEquals( "10.3,22.3", message.oldLocation().toString() );
@@ -175,17 +175,17 @@ public class IncomingMessageTest
   }
 
   @Test
-  public void testHeroAvailabilityUpdatedEventNoOldLocation()
+  public void testHeroLocationUpdatedEventNoOldLocation()
   {
     var message = IncomingMessage.for_( THL_EVENTS, q(
-      "{ 'eventType': 'hero-availability-updated', 'heroId': 'H1', 'location': '10.1,23.3' }"
+      "{ 'eventType': 'hero-location-updated', 'heroId': 'H1', 'location': '10.1,23.3' }"
     ));
 
     assertEquals( 0, message.offset() );
     assertNull( message.key() );
     assertTrue( message.isValid() );
     assertEquals( Topic.THL_EVENTS, message.topic() );
-    assertEquals( HERO_AVAILABILITY_UPDATED, message.eventType() );
+    assertEquals( HERO_LOCATION_UPDATED, message.eventType() );
     assertEquals( "10.1,23.3", message.location().toString() );
     assertNull( message.oldLocation() );
 
@@ -195,17 +195,17 @@ public class IncomingMessageTest
   }
 
   @Test
-  public void testHeroAvailabilityUpdatedEventNoNewLocation()
+  public void testHeroLocationUpdatedEventNoNewLocation()
   {
     var message = IncomingMessage.for_( THL_EVENTS, q(
-      "{ 'eventType': 'hero-availability-updated', 'heroId': 'H1', 'oldLocation': '10.3,22.3' }"
+      "{ 'eventType': 'hero-location-updated', 'heroId': 'H1', 'oldLocation': '10.3,22.3' }"
     ));
 
     assertEquals( 0, message.offset() );
     assertNull( message.key() );
     assertTrue( message.isValid() );
     assertEquals( Topic.THL_EVENTS, message.topic() );
-    assertEquals( HERO_AVAILABILITY_UPDATED, message.eventType() );
+    assertEquals( HERO_LOCATION_UPDATED, message.eventType() );
     assertNull( message.location() );
     assertEquals( "10.3,22.3", message.oldLocation().toString() );
 
@@ -218,7 +218,7 @@ public class IncomingMessageTest
   public void testInvalidHeroAvailabilityUpdatedEvent()
   {
     var message = IncomingMessage.for_( THL_EVENTS, q(
-      "{ 'eventType': 'hero-availability-updated' }"
+      "{ 'eventType': 'hero-location-updated' }"
     ));
 
     assertFalse( message.isValid() );
