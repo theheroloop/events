@@ -61,11 +61,17 @@ public class Message
   public final String requestId()
     { return getStringField( REQUEST_ID_FIELD.fieldName() ); }
 
+  public boolean available()
+  { return getBooleanField( AVAILABLE_FIELD.fieldName() ); }
+
   public final Location location()
     { return getLocationField( LOCATION_FIELD.fieldName() ); }
 
   public final Location oldLocation()
     { return getLocationField( OLD_LOCATION_FIELD.fieldName() ); }
+
+  public final boolean getBooleanField( String fieldName )
+    { return ( Boolean )_fields.get( fieldName ); }
 
   public final String getStringField( String fieldName )
     { return( String )_fields.get( fieldName ); }

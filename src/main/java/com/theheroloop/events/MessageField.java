@@ -17,6 +17,7 @@ public enum MessageField
   LOOPER_ID_FIELD ( "looperId" , STRING_TYPE ),
   REQUEST_ID_FIELD( "requestId", STRING_TYPE ),
 
+  AVAILABLE_FIELD   ( "available"  , BOOLEAN_TYPE  ),
   LOCATION_FIELD    ( "location"   , LOCATION_TYPE ),
   OLD_LOCATION_FIELD( "oldLocation", LOCATION_TYPE ),
 

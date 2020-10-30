@@ -46,6 +46,11 @@ public enum EventType
     requires( REQUEST_ID_FIELD )
   ),
 
+  HERO_AVAILABILITY_UPDATED( THL_EVENTS,
+    requires( HERO_ID_FIELD ),
+    requires( AVAILABLE_FIELD )
+  ),
+
   HERO_LOCATION_UPDATED( THL_EVENTS,
     requires( HERO_ID_FIELD ),
     requiresEither( LOCATION_FIELD, OLD_LOCATION_FIELD )

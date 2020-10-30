@@ -215,10 +215,36 @@ public class IncomingMessageTest
   }
 
   @Test
-  public void testInvalidHeroAvailabilityUpdatedEvent()
+  public void testInvalidHeroLocationUpdatedEvent()
   {
     var message = IncomingMessage.for_( THL_EVENTS, q(
       "{ 'eventType': 'hero-location-updated' }"
+    ));
+
+    assertFalse( message.isValid() );
+  }
+
+  @Test
+  public void testHeroAvailabilityUpdatedEvent()
+  {
+    var message = IncomingMessage.for_( THL_EVENTS, q(
+      "{ 'eventType': 'hero-availability-updated', 'heroId': 'H1', 'available': true }"
+    ));
+
+    assertEquals( 0, message.offset() );
+    assertNull( message.key() );
+    assertTrue( message.isValid() );
+    assertEquals( Topic.THL_EVENTS, message.topic() );
+    assertEquals( HERO_AVAILABILITY_UPDATED, message.eventType() );
+    assertEquals( "H1", message.heroId() );
+    assertTrue( message.available() );
+  }
+
+  @Test
+  public void testInvalidHeroAvailabilityUpdatedEvent()
+  {
+    var message = IncomingMessage.for_( THL_EVENTS, q(
+      "{ 'eventType': 'hero-availability-updated', 'heroId': 'H1', 'available': 'true' }"
     ));
 
     assertFalse( message.isValid() );
