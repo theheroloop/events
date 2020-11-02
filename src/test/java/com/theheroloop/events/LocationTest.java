@@ -7,6 +7,8 @@ import org.junit.Test;
 public class LocationTest
 {
 
+  private static final double DELTA = 0.000001;
+
   @Test
   public void testCreateValidLocation()
   {
@@ -15,6 +17,8 @@ public class LocationTest
     assertNotNull( location );
     assertEquals( "12.2333", location.latitude() );
     assertEquals( "34.34343", location.longitude() );
+    assertEquals( 12.2333, location.latitudeValue(), DELTA );
+    assertEquals( 34.34343, location.longitudeValue(), DELTA );
   }
 
   @Test
@@ -25,6 +29,8 @@ public class LocationTest
     assertNotNull( location );
     assertEquals( "10.1", location.latitude() );
     assertEquals( "23.3", location.longitude() );
+    assertEquals( 10.1, location.latitudeValue(), DELTA );
+    assertEquals( 23.3, location.longitudeValue(), DELTA );
   }
 
   @Test
@@ -35,6 +41,8 @@ public class LocationTest
     assertNotNull( location );
     assertEquals( "-12.2333", location.latitude() );
     assertEquals( "-34.34343", location.longitude() );
+    assertEquals( -12.2333, location.latitudeValue(), DELTA );
+    assertEquals( -34.34343, location.longitudeValue(), DELTA );
   }
 
   @Test
@@ -45,6 +53,8 @@ public class LocationTest
     assertNotNull( location );
     assertEquals( "12", location.latitude() );
     assertEquals( "34", location.longitude() );
+    assertEquals( 12, location.latitudeValue(), DELTA );
+    assertEquals( 34, location.longitudeValue(), DELTA );
   }
 
   @Test
@@ -64,6 +74,8 @@ public class LocationTest
     assertNotNull( location );
     assertEquals( "12.233300", location.latitude() );
     assertEquals( "34.343430", location.longitude() );
+    assertEquals( 12.2333, location.latitudeValue(), DELTA );
+    assertEquals( 34.34343, location.longitudeValue(), DELTA );
   }
 
   @Test
