@@ -75,6 +75,12 @@ public class Location
   public String longitude()
     { return _longitude; }
 
+  public double latitudeValue()
+    { return Double.parseDouble( _latitude ); }
+
+  public double longitudeValue()
+    { return Double.parseDouble( _longitude ); }
+
   @Override
   public String toString()
     { return String.format( "%s,%s", _latitude, _longitude ); }
