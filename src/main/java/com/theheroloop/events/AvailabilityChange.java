@@ -14,8 +14,11 @@ public enum AvailabilityChange
 
   public static final AvailabilityChange for_( int previousValue, int newValue )
   {
-    return previousValue == newValue ? NO_CHANGE     :
-           previousValue == 0        ? NOW_AVAILABLE : NOW_UNAVAILABLE ;
+    var oldIsAvailable = previousValue > 0;
+    var newIsAvailable = newValue      > 0;
+
+    return oldIsAvailable == newIsAvailable ? NO_CHANGE     :
+           newIsAvailable                   ? NOW_AVAILABLE : NOW_UNAVAILABLE ;
   }
 
 }
