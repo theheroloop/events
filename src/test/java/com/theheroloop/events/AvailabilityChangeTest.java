@@ -34,4 +34,10 @@ public class AvailabilityChangeTest
     assertEquals( NO_CHANGE, AvailabilityChange.for_(3, 3) );
   }
 
+  @Test
+  public void testNoChangeEvenIfActualAvailabilityDiffers()
+  {
+    assertEquals( NO_CHANGE, AvailabilityChange.for_(1, 3) );
+  }
+
 }
