@@ -32,14 +32,17 @@ public class MessageBuilder
     return this;
   }
 
+  public MessageBuilder set( MessageField field, Object value )
+    { return set( field.fieldName(), value ); }
+
   public MessageBuilder setLooperId( String looperId )
-    { return set( LOOPER_ID_FIELD.fieldName(), looperId ); }
+    { return set( LOOPER_ID_FIELD, looperId ); }
 
   public MessageBuilder setHeroId( String heroId )
-    { return set( HERO_ID_FIELD.fieldName(), heroId ); }
+    { return set( HERO_ID_FIELD, heroId ); }
 
   public MessageBuilder setRequestId( String requestId )
-    { return set( REQUEST_ID_FIELD.fieldName(), requestId ); }
+    { return set( REQUEST_ID_FIELD, requestId ); }
 
   public Message build()
     { return new Message( _fields ); }
