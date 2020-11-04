@@ -8,8 +8,6 @@ import java.util.concurrent.CountDownLatch;
 import com.theheroloop.events.*;
 import com.theheroloop.events.reactor.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import reactor.core.publisher.Flux;
 import reactor.kafka.receiver.KafkaReceiver;
 import reactor.kafka.sender.KafkaSender;
@@ -17,8 +15,11 @@ import reactor.kafka.sender.KafkaSender;
 public class IntegrationTestSupport
 {
 
-  @Autowired private KafkaReceiverOptionsFactory _receiverOptionsFactory;
-  @Autowired private KafkaSenderOptionsFactory   _senderOptionsFactory;
+  private final KafkaReceiverOptionsFactory _receiverOptionsFactory =
+    new KafkaReceiverOptionsFactory();
+
+  private KafkaSenderOptionsFactory _senderOptionsFactory =
+    new KafkaSenderOptionsFactory();
 
   private final String _name = getClass().getSimpleName();
 
