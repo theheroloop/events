@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.theheroloop</groupId>
   <artifactId>events</artifactId>
-  <version>5.7.0</version>
+  <version>5.8.0</version>
   <name>events</name>
   <description>Common event definitions for reuse on The Hero Loop projects</description>
 
@@ -20,13 +20,19 @@
       <artifactId>reactor-kafka</artifactId>
       <version>1.2.2.RELEASE</version>
     </dependency>
-    
+
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>2.11.0</version>
     </dependency>
-    
+
+    <dependency>
+      <groupId>net.iakovlev</groupId>
+      <artifactId>timeshape</artifactId>
+      <version>2020a.10</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
