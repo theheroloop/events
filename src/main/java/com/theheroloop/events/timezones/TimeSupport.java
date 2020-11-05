@@ -1,4 +1,4 @@
-package com.theheroloop.events.reactor.test;
+package com.theheroloop.events.timezones;
 
 import java.time.Instant;
 import java.util.Date;
