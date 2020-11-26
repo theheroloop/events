@@ -59,4 +59,28 @@ public class MessageTest
     assertTrue( valid );
   }
 
+  @Test
+  public void testIsNotValidRequestCanceledMessageWithNoLooperId()
+  {
+    var message = MessageBuilder.for_( REQUEST_CANCELED )
+    . setRequestId( "23" )
+    . build();
+
+    var valid = message.isValid();
+
+    assertFalse( valid );
+  }
+
+  @Test
+  public void testIsNotValidRequestCanceledMessageWithNoRequestId()
+  {
+    var message = MessageBuilder.for_( REQUEST_CANCELED )
+    . setLooperId( "23" )
+    . build();
+
+    var valid = message.isValid();
+
+    assertFalse( valid );
+  }
+
 }
