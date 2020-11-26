@@ -77,6 +77,16 @@ public enum EventType
     requires( REQUEST_ID_FIELD )
   ),
 
+  HERO_RATING_REQUESTED( THL_EVENTS,
+    requires( HERO_ID_FIELD    ),
+    requires( REQUEST_ID_FIELD )
+  ),
+
+  LOOPER_RATING_REQUESTED( THL_EVENTS,
+    requires( LOOPER_ID_FIELD  ),
+    requires( REQUEST_ID_FIELD )
+  ),
+
   HEROES_AVAILABLE_NEAR_LOOPER( LOOPER_NOTIFICATIONS,
     requires( LOOPER_ID_FIELD  )
   ),
