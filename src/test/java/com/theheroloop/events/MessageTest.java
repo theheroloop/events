@@ -1,7 +1,6 @@
 package com.theheroloop.events;
 
-import static com.theheroloop.events.EventType.HEROES_AVAILABLE_NEAR_LOOPER;
-import static com.theheroloop.events.EventType.REQUEST_CANCELED;
+import static com.theheroloop.events.EventType.*;
 import static com.theheroloop.events.MessageField.*;
 
 import static org.junit.Assert.*;
@@ -81,6 +80,46 @@ public class MessageTest
     var valid = message.isValid();
 
     assertFalse( valid );
+  }
+
+  @Test
+  public void testHeroRatingRequestedMessage()
+  {
+    var message = MessageBuilder.for_( HERO_RATING_REQUESTED )
+    . setHeroId( "H1" )
+    . setRequestId( "23" )
+    . build();
+
+    assertTrue( message.isValid() );
+    
+    var json = message.toJson();
+
+    var map = JsonDeserializer.extract( json );
+
+    assertNotNull( map );
+    assertEquals( "hero-rating-requested", map.get( EVENT_TYPE_FIELD.fieldName() ) );
+    assertEquals( "H1", map.get( HERO_ID_FIELD.fieldName() ) );
+    assertEquals( "23", map.get( REQUEST_ID_FIELD.fieldName() ) );
+  }
+
+  @Test
+  public void testLooperRatingRequestedMessage()
+  {
+    var message = MessageBuilder.for_( LOOPER_RATING_REQUESTED )
+    . setLooperId( "L1" )
+    . setRequestId( "23" )
+    . build();
+
+    assertTrue( message.isValid() );
+
+    var json = message.toJson();
+
+    var map = JsonDeserializer.extract( json );
+
+    assertNotNull( map );
+    assertEquals( "looper-rating-requested", map.get( EVENT_TYPE_FIELD.fieldName() ) );
+    assertEquals( "L1", map.get( LOOPER_ID_FIELD.fieldName() ) );
+    assertEquals( "23", map.get( REQUEST_ID_FIELD.fieldName() ) );
   }
 
 }
