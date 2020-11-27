@@ -91,6 +91,10 @@ public class MessageTest
     . build();
 
     assertTrue( message.isValid() );
+    assertTrue( message.matchesHero( "H1" ) );
+    assertFalse( message.matchesHero( "L1" ) );
+    assertFalse( message.matchesLooper( "H1" ) );
+    assertFalse( message.matchesLooper( "L1" ) );
     
     var json = message.toJson();
 
@@ -111,6 +115,10 @@ public class MessageTest
     . build();
 
     assertTrue( message.isValid() );
+    assertFalse( message.matchesHero( "H1" ) );
+    assertFalse( message.matchesHero( "L1" ) );
+    assertFalse( message.matchesLooper( "H1" ) );
+    assertTrue( message.matchesLooper( "L1" ) );
 
     var json = message.toJson();
 
