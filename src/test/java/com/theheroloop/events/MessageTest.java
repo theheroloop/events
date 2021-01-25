@@ -83,6 +83,30 @@ public class MessageTest
   }
 
   @Test
+  public void testHelpOnTheWayMessage()
+  {
+    var message = MessageBuilder.for_( HELP_ON_THE_WAY )
+    . setHeroId( "H1" )
+    . setLooperId( "L1" )
+    . setRequestId( "23" )
+    . build();
+
+    assertTrue( message.isValid() );
+    assertTrue( message.matchesHero( "H1" ) );
+    assertTrue( message.matchesLooper( "L1" ) );
+
+    var json = message.toJson();
+
+    var map = JsonDeserializer.extract( json );
+
+    assertNotNull( map );
+    assertEquals( "help-on-the-way", map.get( EVENT_TYPE_FIELD.fieldName() ) );
+    assertEquals( "H1", map.get( HERO_ID_FIELD.fieldName() ) );
+    assertEquals( "L1", map.get( LOOPER_ID_FIELD.fieldName() ) );
+    assertEquals( "23", map.get( REQUEST_ID_FIELD.fieldName() ) );
+  }
+
+  @Test
   public void testHeroRatingRequestedMessage()
   {
     var message = MessageBuilder.for_( HERO_RATING_REQUESTED )
@@ -126,6 +150,27 @@ public class MessageTest
 
     assertNotNull( map );
     assertEquals( "looper-rating-requested", map.get( EVENT_TYPE_FIELD.fieldName() ) );
+    assertEquals( "L1", map.get( LOOPER_ID_FIELD.fieldName() ) );
+    assertEquals( "23", map.get( REQUEST_ID_FIELD.fieldName() ) );
+  }
+
+  @Test
+  public void testRequestExpired()
+  {
+    var message = MessageBuilder.for_( REQUEST_EXPIRED )
+    . setLooperId( "L1" )
+    . setRequestId( "23" )
+    . build();
+
+    assertTrue( message.isValid() );
+    assertTrue( message.matchesLooper( "L1" ) );
+
+    var json = message.toJson();
+
+    var map = JsonDeserializer.extract( json );
+
+    assertNotNull( map );
+    assertEquals( "request-expired", map.get( EVENT_TYPE_FIELD.fieldName() ) );
     assertEquals( "L1", map.get( LOOPER_ID_FIELD.fieldName() ) );
     assertEquals( "23", map.get( REQUEST_ID_FIELD.fieldName() ) );
   }
