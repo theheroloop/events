@@ -46,6 +46,12 @@ public enum EventType
     requires( REQUEST_ID_FIELD )
   ),
 
+  HELP_ON_THE_WAY( THL_EVENTS,
+    requires( LOOPER_ID_FIELD  ),
+    requires( HERO_ID_FIELD    ),
+    requires( REQUEST_ID_FIELD )
+  ),
+
   HERO_AVAILABILITY_UPDATED( THL_EVENTS,
     requires( HERO_ID_FIELD ),
     requires( AVAILABLE_FIELD )
@@ -67,6 +73,11 @@ public enum EventType
   ),
 
   REQUEST_CANCELED( THL_EVENTS,
+    requires( LOOPER_ID_FIELD ),
+    requires( REQUEST_ID_FIELD )
+  ),
+
+  REQUEST_EXPIRED( THL_EVENTS,
     requires( LOOPER_ID_FIELD ),
     requires( REQUEST_ID_FIELD )
   ),
